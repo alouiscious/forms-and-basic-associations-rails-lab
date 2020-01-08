@@ -10,7 +10,7 @@ class Song < ActiveRecord::Base
   end
 
   def artist_name
-    self.artist ? self.artist.name : nil
+    self.artist.try(:name)
   end
 
   def genre_id=(name)
@@ -27,8 +27,9 @@ class Song < ActiveRecord::Base
       self.notes << note
     end
   end
-
-
-
-
+  
+  def notes_attributes
+    self.notes_attributes.try(:content)
+    
+  end
 end

@@ -9,16 +9,17 @@
   <br>
   <%= f.label :genre_id %>
   <%= f.collection_select :genre_id, Genre.all, :name, :name %>
+  <br>
 
-  <br>
-  <%= f.label :notes_attributes %>
-  <br>
-  1: <input name="song[notes_attributes][]">
-  <br>
-  2: <input name="song[notes_attributes][]">
-  <br>
-  3: <input name="song[notes_attributes][]">
-  <br>
+  <h3>Notes</h3>
+  <%= f.fields_for :note_attributes do |note_attribute| %>
+    1: <%= note_attribute.text_area :content, rows: 2, cols: 28 %>
+    <br>
+    2: <%= note_attribute.text_area :content, rows: 2, cols: 28 %>
+    <br>
+    3: <%= note_attribute.text_area :content, rows: 2, cols: 28 %>
+    <br>
+  <% end %>
 
   <%= f.submit %>
 <% end %>
