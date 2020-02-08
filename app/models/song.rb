@@ -21,15 +21,15 @@ class Song < ActiveRecord::Base
     self.genre ? self.genre.name : nil
   end
 
-  def notes_attributes=(content)
-    content.each do |id|
-      note = Note.find(id)
-      self.notes << note
-    end
-  end
+  # def notes_attributes=(content)
+  #   content.each do |id|
+  #     note = Note.find(id)
+  #     self.notes << note
+  #   end
+  # end
   
-  def notes_attributes
-    self.notes_attributes.try(:content)
+  # def notes_attributes
+  #   self.notes_attributes.try(:content).to_string
     
-  end
+  # end
 end
